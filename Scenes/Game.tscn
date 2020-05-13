@@ -1,40 +1,45 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Interface/Pitch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interface/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Players/Cubedude.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Interface/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Models/Goal/GoalBlue.material" type="Material" id=5]
+[ext_resource path="res://Assets/Models/Cubedude/CubeDubeBlue.material" type="Material" id=6]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Interface/GUI.tscn" type="PackedScene" id=8]
 
-[sub_resource type="PhysicsMaterial" id=6]
+[sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.7
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 22, 10, 2 )
 
-[sub_resource type="ConcavePolygonShape" id=2]
+[sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( -11, 5, 1, 11, 5, 1, -11, -5, 1, 11, 5, 1, 11, -5, 1, -11, -5, 1, 11, 5, -1, -11, 5, -1, 11, -5, -1, -11, 5, -1, -11, -5, -1, 11, -5, -1, 11, 5, 1, 11, 5, -1, 11, -5, 1, 11, 5, -1, 11, -5, -1, 11, -5, 1, -11, 5, -1, -11, 5, 1, -11, -5, -1, -11, 5, 1, -11, -5, 1, -11, -5, -1, 11, 5, 1, -11, 5, 1, 11, 5, -1, -11, 5, 1, -11, 5, -1, 11, 5, -1, -11, -5, 1, 11, -5, 1, -11, -5, -1, 11, -5, 1, 11, -5, -1, -11, -5, -1 )
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 16, 10, 2 )
-
-[sub_resource type="ConcavePolygonShape" id=4]
-data = PoolVector3Array( -8, 5, 1, 8, 5, 1, -8, -5, 1, 8, 5, 1, 8, -5, 1, -8, -5, 1, 8, 5, -1, -8, 5, -1, 8, -5, -1, -8, 5, -1, -8, -5, -1, 8, -5, -1, 8, 5, 1, 8, 5, -1, 8, -5, 1, 8, 5, -1, 8, -5, -1, 8, -5, 1, -8, 5, -1, -8, 5, 1, -8, -5, -1, -8, 5, 1, -8, -5, 1, -8, -5, -1, 8, 5, 1, -8, 5, 1, 8, 5, -1, -8, 5, 1, -8, 5, -1, 8, 5, -1, -8, -5, 1, 8, -5, 1, -8, -5, -1, 8, -5, 1, 8, -5, -1, -8, -5, -1 )
 
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( -8, 5, 1, 8, 5, 1, -8, -5, 1, 8, 5, 1, 8, -5, 1, -8, -5, 1, 8, 5, -1, -8, 5, -1, 8, -5, -1, -8, 5, -1, -8, -5, -1, 8, -5, -1, 8, 5, 1, 8, 5, -1, 8, -5, 1, 8, 5, -1, 8, -5, -1, 8, -5, 1, -8, 5, -1, -8, 5, 1, -8, -5, -1, -8, 5, 1, -8, -5, 1, -8, -5, -1, 8, 5, 1, -8, 5, 1, 8, 5, -1, -8, 5, 1, -8, 5, -1, 8, 5, -1, -8, -5, 1, 8, -5, 1, -8, -5, -1, 8, -5, 1, 8, -5, -1, -8, -5, -1 )
 
+[sub_resource type="ConcavePolygonShape" id=6]
+data = PoolVector3Array( -8, 5, 1, 8, 5, 1, -8, -5, 1, 8, 5, 1, 8, -5, 1, -8, -5, 1, 8, 5, -1, -8, 5, -1, 8, -5, -1, -8, 5, -1, -8, -5, -1, 8, -5, -1, 8, 5, 1, 8, 5, -1, 8, -5, 1, 8, 5, -1, 8, -5, -1, 8, -5, 1, -8, 5, -1, -8, 5, 1, -8, -5, -1, -8, 5, 1, -8, -5, 1, -8, -5, -1, 8, 5, 1, -8, 5, 1, 8, 5, -1, -8, 5, 1, -8, 5, -1, 8, 5, -1, -8, -5, 1, 8, -5, 1, -8, -5, -1, 8, -5, 1, 8, -5, -1, -8, -5, -1 )
+
 [node name="Game" type="Spatial"]
+script = ExtResource( 7 )
+max_score = 2
 
 [node name="Pitch" parent="." instance=ExtResource( 1 )]
 collision_mask = 6
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41595, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154197, 1.5, 0 )
 collision_layer = 2
 collision_mask = 5
 mass = 0.5
-physics_material_override = SubResource( 6 )
+physics_material_override = SubResource( 1 )
 continuous_cd = true
 can_sleep = false
 
@@ -43,8 +48,15 @@ transform = Transform( 1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0
 
 [node name="Players" type="Node" parent="."]
 
-[node name="Cubedude" parent="Players" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+[node name="GreenCubedude" parent="Players" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3, 0.3, 0 )
+
+[node name="BlueCubedude" parent="Players" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.15, 0.3, -0.001 )
+Player_id = 2
+
+[node name="Cube Dube" parent="Players/BlueCubedude/Armature/Skeleton" index="0"]
+material/0 = ExtResource( 6 )
 
 [node name="Goals" type="Node" parent="."]
 
@@ -63,7 +75,7 @@ material/0 = ExtResource( 5 )
 [node name="BackWall" type="MeshInstance" parent="Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -9 )
 visible = false
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -74,12 +86,12 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/BackWall/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="FrontWall" type="MeshInstance" parent="Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 9 )
 visible = false
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -90,12 +102,12 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/FrontWall/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="LeftWall" type="MeshInstance" parent="Walls"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -12, 5, 0 )
 visible = false
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -106,12 +118,12 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/LeftWall/StaticBody"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="RightWall" type="MeshInstance" parent="Walls"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 12, 5, 0 )
 visible = false
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -122,12 +134,12 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/RightWall/StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="BackWall2" type="MeshInstance" parent="Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -7.419 )
 visible = false
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -138,12 +150,12 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/BackWall2/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="FrontWall2" type="MeshInstance" parent="Walls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 6.85775 )
 visible = false
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -154,12 +166,12 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/FrontWall2/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="LeftWall2" type="MeshInstance" parent="Walls"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -11.3037, 5, 0 )
 visible = false
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -170,12 +182,12 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/LeftWall2/StaticBody"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="RightWall2" type="MeshInstance" parent="Walls"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 11.3006, 5, 0 )
 visible = false
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 __meta__ = {
 "_edit_group_": true
@@ -186,7 +198,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/RightWall2/StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Lights" type="Node" parent="."]
 
@@ -195,5 +207,28 @@ transform = Transform( 0.562069, -0.368658, 0.740385, 0, 0.895168, 0.445729, -0.
 light_color = Color( 0.984314, 0.984314, 0.905882, 1 )
 shadow_enabled = true
 shadow_color = Color( 0.309804, 0.262745, 0.317647, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Spawns" type="Node" parent="."]
+
+[node name="BallSpawn" type="Position3D" parent="Spawns"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.5, 0 )
+
+[node name="Player1Spawn" type="Position3D" parent="Spawns"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3, 2, 0 )
+
+[node name="Player2Spawn" type="Position3D" parent="Spawns"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3, 2, 0 )
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
+[connection signal="body_entered" from="Goals/GoalGreen/GoalsDetection" to="." method="_on_GoalsDetection_body_entered" binds= [ 2 ]]
+[connection signal="body_entered" from="Goals/GoalBlue/GoalsDetection" to="." method="_on_GoalsDetection_body_entered" binds= [ 1 ]]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Players/BlueCubedude"]
+
+[editable path="Goals/GoalGreen"]
 
 [editable path="Goals/GoalBlue"]
