@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="TemplatePlayer" type="KinematicBody"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+
+[node name="Node" type="Node" parent="."]

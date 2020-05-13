@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dominoespizzaakacatchme.ogg-2ba0fb90dcd1ca53e3a040ec35845775.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/dominoespizzaakacatchme.ogg"
+dest_files=[ "res://.import/dominoespizzaakacatchme.ogg-2ba0fb90dcd1ca53e3a040ec35845775.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

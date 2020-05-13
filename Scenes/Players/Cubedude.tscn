@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Models/Cubedude/CubeDude.dae" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/CubeDude.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.516732
+height = 1.16844
+
+[node name="Cubedude" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="2"]
+transform = Transform( 0.949704, 0, 0, 0, -0.00858708, 0.999963, 0, -0.724239, -0.00621933, 0, 1, 0 )
+shape = SubResource( 1 )
