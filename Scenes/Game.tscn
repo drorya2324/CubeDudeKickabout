@@ -1,0 +1,383 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Scenes/Interface/Pitch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Interface/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Players/Cubedude.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Interface/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Models/Goal/GoalBlue.material" type="Material" id=5]
+[ext_resource path="res://Assets/Models/Cubedude/CubeDubeBlue.material" type="Material" id=6]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Interface/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Interface/Floor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/GFX/floor.jpg" type="Texture" id=10]
+[ext_resource path="res://Scenes/Interface/Tribune.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/SFX/airhorn.ogg" type="AudioStream" id=12]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.7
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 22, 10, 2 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -11, 5, 1, 11, 5, 1, -11, -5, 1, 11, 5, 1, 11, -5, 1, -11, -5, 1, 11, 5, -1, -11, 5, -1, 11, -5, -1, -11, 5, -1, -11, -5, -1, 11, -5, -1, 11, 5, 1, 11, 5, -1, 11, -5, 1, 11, 5, -1, 11, -5, -1, 11, -5, 1, -11, 5, -1, -11, 5, 1, -11, -5, -1, -11, 5, 1, -11, -5, 1, -11, -5, -1, 11, 5, 1, -11, 5, 1, 11, 5, -1, -11, 5, 1, -11, 5, -1, 11, 5, -1, -11, -5, 1, 11, -5, 1, -11, -5, -1, 11, -5, 1, 11, -5, -1, -11, -5, -1 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 16, 10, 2 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( -8, 5, 1, 8, 5, 1, -8, -5, 1, 8, 5, 1, 8, -5, 1, -8, -5, 1, 8, 5, -1, -8, 5, -1, 8, -5, -1, -8, 5, -1, -8, -5, -1, 8, -5, -1, 8, 5, 1, 8, 5, -1, 8, -5, 1, 8, 5, -1, 8, -5, -1, 8, -5, 1, -8, 5, -1, -8, 5, 1, -8, -5, -1, -8, 5, 1, -8, -5, 1, -8, -5, -1, 8, 5, 1, -8, 5, 1, 8, 5, -1, -8, 5, 1, -8, 5, -1, 8, 5, -1, -8, -5, 1, 8, -5, 1, -8, -5, -1, 8, -5, 1, 8, -5, -1, -8, -5, -1 )
+
+[sub_resource type="ConcavePolygonShape" id=6]
+data = PoolVector3Array( -8, 5, 1, 8, 5, 1, -8, -5, 1, 8, 5, 1, 8, -5, 1, -8, -5, 1, 8, 5, -1, -8, 5, -1, 8, -5, -1, -8, 5, -1, -8, -5, -1, 8, -5, -1, 8, 5, 1, 8, 5, -1, 8, -5, 1, 8, 5, -1, 8, -5, -1, 8, -5, 1, -8, 5, -1, -8, 5, 1, -8, -5, -1, -8, 5, 1, -8, -5, 1, -8, -5, -1, 8, 5, 1, -8, 5, 1, 8, 5, -1, -8, 5, 1, -8, 5, -1, 8, 5, -1, -8, -5, 1, 8, -5, 1, -8, -5, -1, 8, -5, 1, 8, -5, -1, -8, -5, -1 )
+
+[sub_resource type="PrismMesh" id=7]
+
+[sub_resource type="ConcavePolygonShape" id=8]
+data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="ConcavePolygonShape" id=9]
+data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="ConcavePolygonShape" id=10]
+data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="ConcavePolygonShape" id=11]
+data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="QuadMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_texture = ExtResource( 10 )
+
+[node name="Game" type="Spatial" groups=[
+"Game",
+]]
+script = ExtResource( 7 )
+
+[node name="Pitch" parent="." instance=ExtResource( 1 )]
+collision_mask = 6
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154197, 1.5, 0 )
+mass = 0.5
+physics_material_override = SubResource( 1 )
+can_sleep = false
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.999993, 0.00227246, -0.00309505, 0, 0.806063, 0.59183, 0.00383971, -0.591826, 0.806057, 0, 9.433, 11.47 )
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[node name="Players" type="Node" parent="."]
+
+[node name="GreenCubedude" parent="Players" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3, 0.3, 0 )
+
+[node name="BlueCubedude" parent="Players" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.15, 0.3, -0.001 )
+Player_id = 2
+
+[node name="Cube Dube" parent="Players/BlueCubedude/Armature/Skeleton" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="Goals" type="Node" parent="."]
+
+[node name="GoalGreen" parent="Goals" instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-07, -0.0436194, 0.999048, 0, 0.999048, 0.0436194, -1, 7.1065e-09, -1.62766e-07, 9.61705, 0.22723, 0.212007 )
+
+[node name="GoalBlue" parent="Goals" instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-07, 0.0436194, -0.999048, 0, 0.999048, 0.0436194, 1, 7.1065e-09, -1.62766e-07, -9.37459, 0.210254, 0.0904522 )
+
+[node name="Goal" parent="Goals/GoalBlue" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material/0 = ExtResource( 5 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="BackWall" type="MeshInstance" parent="Walls"]
+transform = Transform( 1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -8.5 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/BackWall"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/BackWall/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="FrontWall" type="MeshInstance" parent="Walls"]
+transform = Transform( 1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/FrontWall"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/FrontWall/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="LeftWall" type="MeshInstance" parent="Walls"]
+transform = Transform( -1.95505e-07, 0, 1, 0, 1, 0, -1.2, 0, -1.62921e-07, -11.5, 5, 0 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/LeftWall"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/LeftWall/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="RightWall" type="MeshInstance" parent="Walls"]
+transform = Transform( -1.95505e-07, 0, 1, 0, 1, 0, -1.2, 0, -1.62921e-07, 11.5, 5, 0 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/RightWall"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/RightWall/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="BackWall2" type="MeshInstance" parent="Walls"]
+transform = Transform( 1.13084, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -7.419 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/BackWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/BackWall2/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="FrontWall2" type="MeshInstance" parent="Walls"]
+transform = Transform( 1.131, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 6.85775 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/FrontWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/FrontWall2/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="LeftWall2" type="MeshInstance" parent="Walls"]
+transform = Transform( -1.84263e-07, 0, 1, 0, 1, 0, -1.131, 0, -1.62921e-07, -11.3037, 5, 0 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/LeftWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/LeftWall2/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="RightWall2" type="MeshInstance" parent="Walls"]
+transform = Transform( -1.84263e-07, 0, 1, 0, 1, 0, -1.131, 0, -1.62921e-07, 11.3, 5, 0 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/RightWall2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/RightWall2/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="CornerWall1" type="MeshInstance" parent="Walls"]
+transform = Transform( -0.226149, -0.0533363, 1.18882, -0.00438561, 0.997573, 0.133958, -0.171736, 0.0447605, -1.56891, -11.364, 0.739105, 7.33298 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/CornerWall1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/CornerWall1/StaticBody"]
+shape = SubResource( 8 )
+
+[node name="CornerWall2" type="MeshInstance" parent="Walls"]
+transform = Transform( 0.162201, -0.108212, 1.60542, 0.0150247, 0.994064, 0.187565, -0.232639, -0.0112475, 1.13145, -11.8876, 0.79555, -7.42352 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/CornerWall2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/CornerWall2/StaticBody"]
+shape = SubResource( 9 )
+
+[node name="CornerWall3" type="MeshInstance" parent="Walls"]
+transform = Transform( 0.202766, 0.0517055, -0.401396, -0.00679533, 0.998489, 0.0284381, 0.198735, -0.018613, 0.410509, 10.6391, 1.08254, -6.63494 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/CornerWall3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/CornerWall3/StaticBody"]
+shape = SubResource( 10 )
+
+[node name="CornerWall4" type="MeshInstance" parent="Walls"]
+transform = Transform( -0.15577, 0.0249406, -0.480447, -0.00774892, 0.998489, 0.0274209, 0.237343, 0.048968, -0.314426, 10.7373, 0.79852, 6.08234 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/CornerWall4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/CornerWall4/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="BlueRightWall" type="MeshInstance" parent="Walls"]
+transform = Transform( -0.14413, -0.108212, 1.68658, -0.0184507, 0.994064, 0.172179, -0.244013, -0.0112475, -1.00923, -11.9636, 1.07124, -1.20906 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/BlueRightWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/BlueRightWall/StaticBody"]
+shape = SubResource( 8 )
+
+[node name="BlueLeftWall" type="MeshInstance" parent="Walls"]
+transform = Transform( 0.148114, -0.108212, 1.66984, 0.0133859, 0.994064, 0.193463, -0.241948, -0.0112475, 1.03293, -11.9204, 0.889812, 1.22288 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/BlueLeftWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/BlueLeftWall/StaticBody"]
+shape = SubResource( 9 )
+
+[node name="GreenRightWall" type="MeshInstance" parent="Walls"]
+transform = Transform( 0.202766, 0.0517055, -0.401396, -0.00679533, 0.998489, 0.0284381, 0.198735, -0.018613, 0.410509, 11.2601, 1.19046, 2.02307 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Walls/GreenRightWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/GreenRightWall/StaticBody"]
+shape = SubResource( 10 )
+
+[node name="GreenLeftWall" type="MeshInstance" parent="Walls"]
+transform = Transform( -0.171783, 0.0249406, -0.457538, -0.00679533, 0.998489, 0.0284381, 0.226054, 0.048968, -0.346836, 11.3405, 1.16537, -1.70518 )
+visible = false
+mesh = SubResource( 7 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="Walls/GreenLeftWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/GreenLeftWall/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
+transform = Transform( 0.562069, -0.368658, 0.740385, 0, 0.895168, 0.445729, -0.82709, -0.250531, 0.503146, 16.1357, 11.2731, 12.3187 )
+light_color = Color( 0.984314, 0.984314, 0.905882, 1 )
+shadow_enabled = true
+shadow_color = Color( 0.309804, 0.262745, 0.317647, 1 )
+
+[node name="Spawns" type="Node" parent="."]
+
+[node name="BallSpawn" type="Position3D" parent="Spawns"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.5, 0 )
+
+[node name="Player1Spawn" type="Position3D" parent="Spawns"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3, 2, 0 )
+
+[node name="Player2Spawn" type="Position3D" parent="Spawns"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3, 2, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Interface" type="Node" parent="."]
+
+[node name="BackWall" type="MeshInstance" parent="Interface"]
+transform = Transform( 70, 0, 0, 0, 70, 0, 0, 0, 2.561, 0, 7.476, -15.104 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="Floor" parent="Interface" instance=ExtResource( 9 )]
+
+[node name="Tribune" parent="Interface" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289, -12.5 )
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Airhorn_SFX" type="AudioStreamPlayer" parent="SFX"]
+pause_mode = 2
+stream = ExtResource( 12 )
+volume_db = -12.0
+[connection signal="body_entered" from="Goals/GoalGreen/GoalsDetection" to="." method="_on_GoalsDetection_body_entered" binds= [ 2 ]]
+[connection signal="body_entered" from="Goals/GoalBlue/GoalsDetection" to="." method="_on_GoalsDetection_body_entered" binds= [ 1 ]]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Players/BlueCubedude"]
+
+[editable path="Goals/GoalGreen"]
+
+[editable path="Goals/GoalBlue"]
