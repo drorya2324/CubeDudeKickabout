@@ -28,6 +28,8 @@ func reset_pitch():
 func _on_GoalsDetection_body_entered(body, player_id):
 	#print ("score for player %s" %player_id)
 	update_score(player_id)
+	if not $SFX/Airhorn_SFX.is_playing():
+		$SFX/Airhorn_SFX.play()
 	lock_ball()
 	$Timer.start()
 	get_tree().call_group("Players","can_move", false)
@@ -63,9 +65,9 @@ func update_score(player):
 	if player ==1:
 		P1_score += 1
 		new_score = P1_score
-	else:
-		P2_score +=1
-		new_score = P1_score
+	elif player == 2:
+		P2_score += 1
+		new_score = P2_score
 	$GUI.updating(player,new_score)
 	
 	
@@ -81,3 +83,11 @@ func end_game(winner):
 func restart_game():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+
+# Pause Game Functions:
+#pause Game Key: "P"
+func relocate_ball():
+	var BallSpawn = $Spawns/BallSpawn
+	Ball.translation = BallSpawn.translation
