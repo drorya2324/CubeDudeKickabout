@@ -47,7 +47,7 @@ data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, 
 [sub_resource type="ConcavePolygonShape" id=11]
 data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 resource_name = "dim"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:light_energy")
@@ -62,9 +62,9 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="QuadMesh" id=12]
+[sub_resource type="QuadMesh" id=13]
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=14]
 albedo_texture = ExtResource( 10 )
 
 [node name="Game" type="Spatial" groups=[
@@ -361,7 +361,7 @@ shadow_color = Color( 0.309804, 0.262745, 0.317647, 1 )
 script = ExtResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lights/WorldLight"]
-anims/dim = SubResource( 14 )
+anims/dim = SubResource( 12 )
 
 [node name="SpotLight" type="SpotLight" parent="Lights" groups=[
 "lights",
@@ -394,8 +394,8 @@ wait_time = 2.0
 
 [node name="BackWall" type="MeshInstance" parent="Interface"]
 transform = Transform( 70, 0, 0, 0, 70, 0, 0, 0, 2.561, 0, 7.476, -15.104 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
 
 [node name="Floor" parent="Interface" instance=ExtResource( 9 )]
 
