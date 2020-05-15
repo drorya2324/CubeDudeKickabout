@@ -62,3 +62,9 @@ func face_forward():
 # Being called by Game.gd
 func can_move(value):
 	can_move = value
+
+
+# Being called by Game.gd
+func emit_particles(player):
+	if player == Player_id:
+		$Particles.emitting = true
